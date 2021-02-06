@@ -20,6 +20,7 @@ int main()
 {	
 	while (running)
 	{
+		// Main Menu / Menu Selection
 		while (MenuSelection == 0)
 		{
 			cout << "Welcome to the STAR WARS CHARACTER CREATION Menu!\n\nPlease select from one of the following Options:\n\n1. Create new Character\n\n";
@@ -37,7 +38,8 @@ int main()
 		while (MenuSelection == 1)
 		{
 			cout << "Character Creation\n\nPlease Enter Name: ";
-			cin >> tempName;
+			cin.ignore();
+			getline(cin, tempName);
 			cout << "\n\nPlease Enter Health: ";
 			cin >> tempHealth;
 			Character tempCharacter(tempName, tempHealth);
@@ -45,14 +47,15 @@ int main()
 			tempCharacter.DisplayInfo();
 			cout << "\n\nPlease choose your Alliegence from the following Selection\n\n1. Jedi\n\n2. Sith\n\n3. Mandalorian\n\nSelection: ";
 			cin >> tempSelect;
+			// Create Character based on Alliegence chosen
 			switch (tempSelect)
 			{
 			case 1:
 			{
 				for (int i = 0; i < 15; i++)
 				{
-					Character* saveCharacter = Characters[i];
-					if (saveCharacter == nullptr)
+					Character* pCharacter = Characters[i];
+					if (pCharacter == nullptr)
 					{
 						Characters[i] = new Jedi(tempCharacter.GetName(), tempCharacter.GetHealth());
 						MenuSelection = 0;
@@ -66,8 +69,8 @@ int main()
 			{
 				for (int i = 0; i < 15; i++)
 				{
-					Character* saveCharacter = Characters[i];
-					if (saveCharacter == nullptr)
+					Character* pCharacter = Characters[i];
+					if (pCharacter == nullptr)
 					{
 						Characters[i] = new Sith(tempCharacter.GetName(), tempCharacter.GetHealth());
 						MenuSelection = 0;
@@ -81,8 +84,8 @@ int main()
 			{
 				for (int i = 0; i < 15; i++)
 				{
-					Character* saveCharacter = Characters[i];
-					if (saveCharacter == nullptr)
+					Character* pCharacter = Characters[i];
+					if (pCharacter == nullptr)
 					{
 						Characters[i] = new Mandalorian(tempCharacter.GetName(), tempCharacter.GetHealth());
 						MenuSelection = 0;
@@ -136,7 +139,7 @@ int main()
 					continue;
 				}
 				cout << "Save Slot " << i + 1 << ". ";
-				cout << pCharacter->GetName() << "\n\n";
+				cout << pCharacter->GetName() << "\n";
 			}
 			cout << "Please enter which character you would like to delete (by save slot number)\nOr enter 0 to return to the main menu: ";
 			cin >> tempSelect;
@@ -176,8 +179,11 @@ int main()
 		{
 			continue;
 		}
+		cout << "deleting character...\n";
 		delete pCharacter;
 	}
+
+	
 	
 
 	

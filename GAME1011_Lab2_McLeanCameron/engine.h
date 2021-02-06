@@ -14,22 +14,20 @@ private:
 public:
 	Character() {}
 
-	virtual ~Character()
-	{
-		
-	}
-	Character(string name, int health)
+	virtual ~Character() = default;
+
+	Character(const string name, const int health)
 	{
 		SetHealth(health);
-		SetName(name);
+		Character::SetName(name);
 	}
 
-	virtual void SetName(string name)
+	virtual void SetName(const string name)
 	{
 		m_name = name;
 	}
 
-	void SetHealth(int health)
+	void SetHealth(const int health)
 	{
 		m_health = health;
 	}
@@ -62,12 +60,12 @@ public:
 	Character* character;
 	Weapon() {}
 
-	void SetWeaponName(string weapon)
+	void SetWeaponName(const string weapon)
 	{
 		m_weaponName = weapon;
 	}
 
-	void SetDesc(string description)
+	void SetDesc(const string description)
 	{
 		m_description = description;
 	}
@@ -77,19 +75,19 @@ public:
 		m_damage = damage;
 	}
 
-	void SetAbilities(string ability1, string ability2, string ability3)
+	void SetAbilities(const string ability1, const string ability2, const string ability3)
 	{
 		m_abilities[0] = ability1;
 		m_abilities[1] = ability2;
 		m_abilities[2] = ability3;
 	}
 	
-	string GetWeaponName()
+	string GetWeaponName() const
 	{
 		return m_weaponName;
 	}
 
-	string GetDesc()
+	string GetDesc() const
 	{
 		return m_description;
 	}
@@ -99,17 +97,16 @@ public:
 		return m_damage;
 	}
 
-	string GetAbilities(int i)
+	string GetAbilities(const int i)
 	{
 		return m_abilities[i];
 	}
 
-	
 	friend ostream& operator<<(ostream& out, Weapon* weapon);
 };
 
 
-class Jedi : public Character
+class Jedi final : public Character
 {
 private:
 	Weapon* m_weapon;
@@ -146,7 +143,7 @@ public:
 };
 
 
-class Sith : public Character
+class Sith final : public Character
 {
 private:
 	Weapon* m_weapon;
@@ -182,7 +179,7 @@ public:
 
 };
 
-class Mandalorian : public Character
+class Mandalorian final : public Character
 {
 private:
 	Weapon* m_weapon;
@@ -215,7 +212,6 @@ public:
 		cout << " | Health: " << GetHealth() << " | ";
 		cout << m_weapon;
 	}
-
 };
 
 

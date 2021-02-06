@@ -1,22 +1,22 @@
 #include "engine.h"
 
-Jedi::Jedi(string name, int health) : Character(name, health)
+Jedi::Jedi(const string name, const int health) : Character(name, health)
 {
-	SetName(name);
+	Jedi::SetName(name);
 	SetHealth(health);
 	SetWeapon();
 }
 
-Sith::Sith(string name, int health) :Character (name, health)
+Sith::Sith(const string name, const int health) :Character (name, health)
 {
-	SetName(name);
+	Sith::SetName(name);
 	SetHealth(health);
 	SetWeapon();
 }
 
-Mandalorian::Mandalorian(string name, int health) : Character(name, health)
+Mandalorian::Mandalorian(const string name, const int health) : Character(name, health)
 {
-	SetName(name);
+	Mandalorian::SetName(name);
 	SetHealth(health);
 	SetWeapon();
 }
