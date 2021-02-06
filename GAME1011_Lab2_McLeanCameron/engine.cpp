@@ -21,10 +21,10 @@ Mandalorian::Mandalorian(const string name, const int health) : Character(name, 
 	SetWeapon();
 }
 
-ostream& operator<<(ostream& out, Weapon* weapon)
+ostream& operator<<(ostream& output, Weapon* weapon)
 {
-	out << "Weapon: " << weapon->GetWeaponName() << "\n\n" << weapon->GetDesc() << "\n\nBase Weapon Damage: " << weapon->GetDamage() << "\n\nAbility 1: " << weapon->GetAbilities(0) << " | Ability 2: " << weapon->GetAbilities(1)
+	output << "Weapon: " << weapon->GetWeaponName() << "\n\n" << weapon->GetDesc() << "\n\nBase Weapon Damage: " << weapon->GetDamage() << "\n\nAbility 1: " << weapon->GetAbilities(0) << " | Ability 2: " << weapon->GetAbilities(1)
 	<< " | Ability 3: " << weapon->GetAbilities(2) << "\n------------------------------------------------------------------------------------------------------------------------\n\n";
-	return out;
+	return output;
 }
 

@@ -42,10 +42,7 @@ public:
 		return m_health;
 	}
 	
-	virtual void DisplayInfo()
-	{
-		cout << "Name: " << GetName() << " | Health: " << GetHealth();
-	}
+	virtual void DisplayInfo() = 0;
 };
 
 class Weapon
@@ -105,7 +102,6 @@ public:
 	friend ostream& operator<<(ostream& out, Weapon* weapon);
 };
 
-
 class Jedi final : public Character
 {
 private:
@@ -141,7 +137,6 @@ public:
 	}
 
 };
-
 
 class Sith final : public Character
 {

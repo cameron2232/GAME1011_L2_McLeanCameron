@@ -1,13 +1,6 @@
 #include "engine.h"
 #include <iostream>
 using namespace std;
-
-/*Character tempCharacter("Cameron", 100);
-	Characters[1] = new Jedi("Cameron", 100);
-	Characters[2] = new Sith(tempCharacter.GetName(), tempCharacter.GetHealth());
-	Characters[3] = new Mandalorian(tempCharacter.GetName(), tempCharacter.GetHealth());*/
-//TODO: Pointers for what youre doing above ^ DELETE THIS BEFORE SUBMISSION!
-
 int MenuSelection;
 int tempHealth;
 int tempSelect;
@@ -42,9 +35,8 @@ int main()
 			getline(cin, tempName);
 			cout << "\n\nPlease Enter Health: ";
 			cin >> tempHealth;
-			Character tempCharacter(tempName, tempHealth);
 			system("cls");
-			tempCharacter.DisplayInfo();
+			cout << "Name: " << tempName << " | Health: " << tempHealth;
 			cout << "\n\nPlease choose your Alliegence from the following Selection\n\n1. Jedi\n\n2. Sith\n\n3. Mandalorian\n\nSelection: ";
 			cin >> tempSelect;
 			// Create Character based on Alliegence chosen
@@ -57,7 +49,7 @@ int main()
 					Character* pCharacter = Characters[i];
 					if (pCharacter == nullptr)
 					{
-						Characters[i] = new Jedi(tempCharacter.GetName(), tempCharacter.GetHealth());
+						Characters[i] = new Jedi(tempName, tempHealth);
 						MenuSelection = 0;
 						system("cls");
 						break;
@@ -72,7 +64,7 @@ int main()
 					Character* pCharacter = Characters[i];
 					if (pCharacter == nullptr)
 					{
-						Characters[i] = new Sith(tempCharacter.GetName(), tempCharacter.GetHealth());
+						Characters[i] = new Sith(tempName, tempHealth);
 						MenuSelection = 0;
 						system("cls");
 						break;
@@ -87,7 +79,7 @@ int main()
 					Character* pCharacter = Characters[i];
 					if (pCharacter == nullptr)
 					{
-						Characters[i] = new Mandalorian(tempCharacter.GetName(), tempCharacter.GetHealth());
+						Characters[i] = new Mandalorian(tempName, tempHealth);
 						MenuSelection = 0;
 						system("cls");
 						break;
@@ -164,14 +156,13 @@ int main()
 				}
 			}
 		}
-
 		if(MenuSelection==4)
 		{
 			cout << "Thank you for Playing! May the force be with you!\n";
 			running = false;
-		}
-		
+		}		
 	}//end of running
+	//Cleaning
 	for (int i = 0; i < 15; i++)
 	{
 		Character* pCharacter = Characters[i];
@@ -182,13 +173,5 @@ int main()
 		cout << "deleting character...\n";
 		delete pCharacter;
 	}
-
-	
-	
-
-	
-	
-	
-
 }
 
